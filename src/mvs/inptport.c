@@ -80,7 +80,7 @@ void check_input_mode(void)
 	else if (!neogeo_machine_mode)
 	{
 		if (memory_region_user1[0x00400 >> 1] & 0x8000)
-			neogeo_input_mode = INPUT_AES;
+			neogeo_input_mode = INPUT_MVS;
 		else
 			neogeo_input_mode = INPUT_MVS;
 	}
@@ -111,9 +111,9 @@ void check_input_mode(void)
 	case ASIA_AES:
 	case JAPAN_AES:
 	case DEBUG_BIOS:
-		neogeo_input_mode = INPUT_AES;
+		neogeo_input_mode = INPUT_MVS;
 		break;
-	}
+	} 
 }
 
 
@@ -189,7 +189,7 @@ static void update_inputport0(void)
 			if (input_flag[P1_LEFT])    value &= ~0x04;
 			if (input_flag[P1_RIGHT])   value &= ~0x08;
 			if (input_flag[P1_BUTTONA]) value &= ~0x10;
-			if (input_flag[P1_BUTTONB]) value &= ~0x20;
+			if (input_flag[P1_BUTTONB]) value &= ~0x40;
 		}
 
 	case NGH_popbounc:
@@ -200,8 +200,8 @@ static void update_inputport0(void)
 			if (input_flag[P1_LEFT])    value &= ~0x04;
 			if (input_flag[P1_RIGHT])   value &= ~0x08;
 			if (input_flag[P1_BUTTONA]) value &= ~(0x10|0x80);
-			if (input_flag[P1_BUTTONB]) value &= ~0x20;
-			if (input_flag[P1_BUTTONC]) value &= ~0x40;
+			if (input_flag[P1_BUTTONB]) value &= ~0x40;
+			if (input_flag[P1_BUTTONC]) value &= ~0x20;
 		}
 		break;
 
@@ -213,8 +213,8 @@ static void update_inputport0(void)
 			if (input_flag[P1_LEFT])    value &= ~0x04;
 			if (input_flag[P1_RIGHT])   value &= ~0x08;
 			if (input_flag[P1_BUTTONA]) value &= ~0x10;
-			if (input_flag[P1_BUTTONB]) value &= ~0x20;
-			if (input_flag[P1_BUTTONC]) value &= ~0x40;
+			if (input_flag[P1_BUTTONB]) value &= ~0x40;
+			if (input_flag[P1_BUTTONC]) value &= ~0x20;
 			if (input_flag[P1_BUTTOND]) value &= ~0x80;
 
 			value = apply_hotkey(value);
@@ -248,7 +248,7 @@ static void update_inputport1(void)
 			if (input_flag[P1_LEFT])    value &= ~0x04;
 			if (input_flag[P1_RIGHT])   value &= ~0x08;
 			if (input_flag[P1_BUTTONA]) value &= ~0x10;
-			if (input_flag[P1_BUTTONB]) value &= ~0x20;
+			if (input_flag[P1_BUTTONB]) value &= ~0x40;
 		}
 		break;
 
@@ -260,8 +260,8 @@ static void update_inputport1(void)
 			if (input_flag[P1_LEFT])    value &= ~0x04;
 			if (input_flag[P1_RIGHT])   value &= ~0x08;
 			if (input_flag[P1_BUTTONA]) value &= ~(0x10|0x80);
-			if (input_flag[P1_BUTTONB]) value &= ~0x20;
-			if (input_flag[P1_BUTTONC]) value &= ~0x40;
+			if (input_flag[P1_BUTTONB]) value &= ~0x40;
+			if (input_flag[P1_BUTTONC]) value &= ~0x20;
 		}
 		break;
 
@@ -273,8 +273,8 @@ static void update_inputport1(void)
 			if (input_flag[P1_LEFT])    value &= ~0x04;
 			if (input_flag[P1_RIGHT])   value &= ~0x08;
 			if (input_flag[P1_BUTTONA]) value &= ~0x10;
-			if (input_flag[P1_BUTTONB]) value &= ~0x20;
-			if (input_flag[P1_BUTTONC]) value &= ~0x40;
+			if (input_flag[P1_BUTTONB]) value &= ~0x40;
+			if (input_flag[P1_BUTTONC]) value &= ~0x20;
 			if (input_flag[P1_BUTTOND]) value &= ~0x80;
 
 			value = apply_hotkey(value);

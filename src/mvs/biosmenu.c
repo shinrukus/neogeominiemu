@@ -169,7 +169,7 @@ static int bios_check(int flag)
 	if (flag == 2)
 	{
 		neogeo_bios = -1;
-		check_max = JAPAN_AES;		//MAX BIOS
+		check_max = UNI_V32;		//MAX BIOS
 	}
 #endif
 
@@ -363,7 +363,7 @@ void bios_select(int flag)
 		pad_update();
 
 		if (Loop == LOOP_EXIT) break;
-	} while (!pad_pressed(PSP_CTRL_LTRIGGER) && !pad_pressed(PSP_CTRL_CROSS));
+	} while (!pad_pressed(PSP_CTRL_SELECT) && !pad_pressed(PSP_CTRL_CIRCLE) && !pad_pressed(PSP_CTRL_SQUARE));
 
 	pad_wait_clear();
 	ui_popup_reset();
